@@ -1,5 +1,83 @@
 models:
-  # ...
+  # Wilayah Administratif
+  Negara:
+    id: uuid primary
+    nama: string
+    kode: string nullable
+    phone_code: string unique
+    bendera: string nullable
+    timestamps: true
+    softDeletes: true
+    relationships:
+      hasMany: Provinsi
 
-controllers:
-  # ...
+  Provinsi:
+    id: uuid primary
+    negara_id: uuid foreign:negaras index
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: Negara
+      hasMany: Kabupaten
+
+  Kabupaten:
+    id: uuid primary
+    provinsi_id: uuid foreign:provinsis index
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: Provinsi
+      hasMany: Kecamatan
+
+  Kecamatan:
+    id: uuid primary
+    kabupaten_id: uuid foreign:kabupatens index
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: Kabupaten
+      hasMany: Kelurahan
+
+  Kelurahan:
+    id: uuid primary
+    kecamatan_id: uuid foreign:kecamatans index
+    nama: string
+    kode_pos: string nullable index
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: Kecamatan
+
+  # Instansi Pendidikan
+  Instansi:
+  InstansiAsal:
+
+  # Periodik
+  TahunPelajaran:
+  TahunPendaftaran:
+  TahunAnggaran:
+
+  # Primary Entities
+  Jabatan:
+  User:
+  Pegawai:
+  Siswa:
+  Jurusan:
+  Kelas:
+  Ekstrakurikuler:
+  MataPelajaran:
+  PresensiPegawai:
+  PresensiSiswa:
+  Informasi:
+  PengajuanTag:
+
+  # Historical Entities
+  JadwalPelajaran:
+  JadwalPendaftaran:
+  JadwalPresensi:
+
+  # Supporting Entities
+  Pengaturan:
