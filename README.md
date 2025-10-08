@@ -5,7 +5,8 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![IoT](https://img.shields.io/badge/IoT-Enabled-orange.svg)
-![Laravel](https://img.shields.io/badge/Laravel-10.x-red.svg)
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg) 
+![Filament](https://img.shields.io/badge/Filament-4.x-orange.svg)
 
 **Sistem monitoring kehadiran otomatis untuk siswa dan guru menggunakan teknologi IoT**
 
