@@ -76,9 +76,9 @@
 
 @if ($loadTime)
     @if ($footerPosition === 'sidebar' || $footerPosition === 'sidebar.footer')
-        <span class="w-full">{{ $loadTimePrefix ?? '' }} {{ $loadTime }}s</span>
+        <span class="w-full">{{ $loadTimePrefix ?? '' }} {{ $loadTime }} detik.</span>
     @else
-        <span>{{ $loadTimePrefix ?? '' }} {{ $loadTime }} detik</span>
+        <span>{{ $loadTimePrefix ?? '' }} {{ $loadTime }} detik.</span>
     @endif
 @endif
 

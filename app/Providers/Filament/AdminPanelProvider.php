@@ -70,7 +70,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugins([
                 EasyFooterPlugin::make()
-                ->withSentence(env('APP_NAME') . ' | Powered by ' . env('AUTHOR'))
+                ->withSentence(env('APP_NAME') . ' | Powered by ' . env('AUTHOR')),
             ]);
     }
 }
