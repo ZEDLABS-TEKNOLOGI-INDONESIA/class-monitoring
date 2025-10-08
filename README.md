@@ -339,7 +339,7 @@ Mengirim data hasil scanning dari IoT device (dikirim setiap 30 detik)
         "classroom": "IX-A",
         "schedule": {
             "subject": "Matematika",
-            "teacher": "Pak Yahya",
+            "teacher": "Pak Yahya Zulfikri",
             "time": "08:00 - 09:30"
         },
         "present": {
