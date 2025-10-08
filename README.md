@@ -58,7 +58,7 @@ Sistem bekerja dengan cara:
 
 -   **Notifikasi Per Jam Pelajaran**: Otomatis dikirim setiap pergantian jam pelajaran
 -   **Notifikasi Individual ke Orang Tua**: Setiap orang tua menerima notifikasi WhatsApp khusus tentang keberadaan anaknya sendiri
-    -   Contoh: "Yth. Bpk/Ibu Ahmad Fadli, putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) bersama Pak Yahya."
+    -   Contoh: "Yth. Bpk/Ibu Fera Oktapia, putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) bersama Pak Yahya."
     -   Notifikasi dikirim segera setelah siswa terdeteksi di kelas
 -   **Notifikasi Ringkasan ke Wakil Kurikulum**: Laporan keberadaan seluruh guru dan siswa per kelas per jam pelajaran
     -   Contoh: "Kelas IX-A, Matematika (08:00-09:30): Guru HADIR, Siswa 28/30 HADIR, 2 TIDAK TERDETEKSI"
@@ -105,7 +105,7 @@ Sistem bekerja dengan cara:
 │   MySQL     │  │  Gateway API │  │  Real-time   │  │  Notif per  │
 │             │  │              │  │  Monitoring  │  │  Orang Tua  │
 │ - Presence  │  │ - Orang Tua  │  └──────────────┘  │             │
-│   Logs      │  │   (Personal) │                    │ "Ahmad Fadli│
+│   Logs      │  │   (Personal) │                    │ "Fera Oktapia│
 │ - Schedules │  │ - Waka Kur.  │                    │  HADIR di   │
 │ - Parent    │  │   (Summary)  │                    │  Matematika"│
 │   Phones    │  │              │                    └─────────────┘
@@ -283,11 +283,11 @@ WHATSAPP_API_TOKEN=your_api_token
 -   **Setiap Jam Pelajaran**: Notifikasi otomatis terkirim ke orang tua (per siswa) dan Wakil Kurikulum (ringkasan)
 -   **Isi Notifikasi untuk Orang Tua (Personal/Individual)**:
     -   Dikirim ke nomor WhatsApp orang tua masing-masing siswa
-    -   Contoh: "Yth. Bpk/Ibu Orang Tua Ahmad Fadli, Putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) dengan Pak Yahya Zulfikri. Terdeteksi pada jam 08:05 WIB."
+    -   Contoh: "Yth. Bpk/Ibu Orang Tua Fera Oktapia, Putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) dengan Pak Yahya Zulfikri. Terdeteksi pada jam 08:05 WIB."
     -   Notifikasi terpisah jika siswa TIDAK TERDETEKSI di kelas
 -   **Isi Notifikasi untuk Wakil Kurikulum (Ringkasan Kelas)**:
     -   Ringkasan keberadaan guru dan seluruh siswa per kelas
-    -   Contoh: "Laporan Kelas IX-A, Matematika (08:00-09:30): Guru: Pak Yahya HADIR ✓, Siswa: 28/30 HADIR, 2 Tidak Terdeteksi (Ahmad Fadli, Siti Nurhaliza)"
+    -   Contoh: "Laporan Kelas IX-A, Matematika (08:00-09:30): Guru: Pak Yahya HADIR ✓, Siswa: 28/30 HADIR, 2 Tidak Terdeteksi (Fera Oktapia, Alexandra)"
 -   **Alert Real-time**: Pemberitahuan khusus jika guru/siswa tidak terdeteksi
 -   Monitor status pengiriman di "Notifications Resource"
 
@@ -384,13 +384,13 @@ Authorization: Bearer {token}
         },
         "students_presence": [
             {
-                "name": "Ahmad Fadli",
+                "name": "Fera Oktapia",
                 "nis": "2024001",
                 "status": "present",
                 "last_detected": "08:15:30"
             },
             {
-                "name": "Siti Nurhaliza",
+                "name": "Alexandra",
                 "nis": "2024002",
                 "status": "not_detected",
                 "last_detected": null
@@ -430,18 +430,18 @@ Trigger manual pengiriman notifikasi per jam pelajaran (biasanya otomatis via cr
     },
     "notifications": [
         {
-            "student_name": "Ahmad Fadli",
+            "student_name": "Fera Oktapia",
             "parent_phone": "6281234567890",
             "status": "present",
             "sent": true,
-            "message_preview": "Yth. Bpk/Ibu Orang Tua Ahmad Fadli, Putra/i Anda terdeteksi HADIR..."
+            "message_preview": "Yth. Bpk/Ibu Orang Tua Fera Oktapia, Putra/i Anda terdeteksi HADIR..."
         },
         {
-            "student_name": "Siti Nurhaliza",
+            "student_name": "Alexandra",
             "parent_phone": "6281234567891",
             "status": "not_detected",
             "sent": true,
-            "message_preview": "Yth. Bpk/Ibu Orang Tua Siti Nurhaliza, Putra/i Anda TIDAK TERDETEKSI..."
+            "message_preview": "Yth. Bpk/Ibu Orang Tua Alexandra, Putra/i Anda TIDAK TERDETEKSI..."
         }
     ]
 }
