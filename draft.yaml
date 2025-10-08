@@ -302,13 +302,34 @@ models:
 
   PengajuanTag:
     id: uuid primary
-    nama: string
+    kode_pengajuan: string unique
+    kategori: enum('baru', 'rusak', 'hilang', 'lainnya')
+    tanggal: datetime
+    status: enum('menunggu', 'disetujui', 'ditolak', 'proses', 'selesai') default:menunggu
+    catatan: text nullable
+    biaya: decimal(15,2) nullable
+    status_pembayaran: enum('lunas', 'belum') default:belum
+    status_pengambilan: enum('sudah', 'belum') default:belum
+    pegawai_id: uuid foreign:pegawais index nullable
+    siswa_id: uuid foreign:siswas index nullable
     timestamps: true
     softDeletes: true
     relationships:
       belongsTo: #
       hasMany: #
 
+  # Konseling Entities
+  Konseling:
+    id: uuid primary
+    siswa_id: uuid foreign:siswas index
+    pegawai_id: uuid foreign:pegawais index
+    tanggal: datetime
+    topik: string
+    catatan: text nullable
+    hasil: text nullable
+    tindak_lanjut: text nullable
+
+  # Notification Entities
   Informasi:
     id: uuid primary
     nama: string
