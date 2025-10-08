@@ -58,10 +58,10 @@ Sistem bekerja dengan cara:
 
 -   **Notifikasi Per Jam Pelajaran**: Otomatis dikirim setiap pergantian jam pelajaran
 -   **Notifikasi Individual ke Orang Tua**: Setiap orang tua menerima notifikasi WhatsApp khusus tentang keberadaan anaknya sendiri
-    -   Contoh: "Yth. Bpk/Ibu Ahmad Fadli, putra/i Anda terdeteksi HADIR di kelas IIX-A pada mata pelajaran Matematika (08:00-09:30) bersama Pak Yahya."
+    -   Contoh: "Yth. Bpk/Ibu Ahmad Fadli, putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) bersama Pak Yahya."
     -   Notifikasi dikirim segera setelah siswa terdeteksi di kelas
 -   **Notifikasi Ringkasan ke Wakil Kurikulum**: Laporan keberadaan seluruh guru dan siswa per kelas per jam pelajaran
-    -   Contoh: "Kelas IIX-A, Matematika (08:00-09:30): Guru HADIR, Siswa 28/30 HADIR, 2 TIDAK TERDETEKSI"
+    -   Contoh: "Kelas IX-A, Matematika (08:00-09:30): Guru HADIR, Siswa 28/30 HADIR, 2 TIDAK TERDETEKSI"
 -   **Alert Real-time**: Peringatan jika guru/siswa tidak terdeteksi di kelas saat jam pelajaran
 -   **Ringkasan Harian**: Laporan keberadaan harian otomatis di akhir hari untuk setiap orang tua dan Wakil Kurikulum
 -   **Customizable Template**: Template notifikasi WhatsApp dapat disesuaikan per jenis notifikasi dan penerima
