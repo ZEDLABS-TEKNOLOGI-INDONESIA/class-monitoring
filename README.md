@@ -100,15 +100,15 @@ Sistem bekerja dengan cara:
          │
          ├──────────────┬─────────────────┬──────────────────┐
          ▼              ▼                 ▼                  ▼
-┌─────────────┐  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐
-│  Database   │  │  WhatsApp    │  │  Dashboard   │  │  WhatsApp   │
-│   MySQL     │  │  Gateway API │  │  Real-time   │  │  Notif per  │
-│             │  │              │  │  Monitoring  │  │  Orang Tua  │
-│ - Presence  │  │ - Orang Tua  │  └──────────────┘  │             │
-│   Logs      │  │   (Personal) │                    │ "Fera Oktapia│
-│ - Schedules │  │ - Waka Kur.  │                    │  HADIR di   │
-│ - Parent    │  │   (Summary)  │                    │  Matematika"│
-│   Phones    │  │              │                    └─────────────┘
+┌─────────────┐  ┌──────────────┐  ┌──────────────┐  ┌───────────────┐
+│  Database   │  │  WhatsApp    │  │  Dashboard   │  │  WhatsApp     │
+│   MySQL     │  │  Gateway API │  │  Real-time   │  │  Notif per    │
+│             │  │              │  │  Monitoring  │  │  Orang Tua    │
+│ - Presence  │  │ - Orang Tua  │  └──────────────┘  │               │
+│   Logs      │  │   (Personal) │                    │  "Fera Oktapia│
+│ - Schedules │  │ - Waka Kur.  │                    │  HADIR di     │
+│ - Parent    │  │   (Summary)  │                    │  Matematika"  │
+│   Phones    │  │              │                    └───────────────┘
 └─────────────┘  └──────────────┘
 ```
 
@@ -126,7 +126,7 @@ Sistem bekerja dengan cara:
 -   **Admin Panel**: Filament 4.x
 -   **Database**: MySQL 8.0+
 -   **IoT**: Arduino IDE, ESP32 Libraries
--   **API Integration**: WhatsApp Business API / Fonnte
+-   **API Integration**: WhatsApp Business API / Custom Api Whatsapp
 
 ### Libraries & Dependencies
 
