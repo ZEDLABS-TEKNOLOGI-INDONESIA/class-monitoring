@@ -228,7 +228,7 @@ models:
       hasMany: #
 
   # Pendaftaran Entities
-  JadwalPendaftaran:
+  JalurPendaftaran:
     id: uuid primary
     nama: string
     timestamps: true
@@ -237,7 +237,7 @@ models:
       belongsTo: #
       hasMany: #
 
-  JalurPendaftaran:
+  JadwalPendaftaran:
     id: uuid primary
     nama: string
     timestamps: true
