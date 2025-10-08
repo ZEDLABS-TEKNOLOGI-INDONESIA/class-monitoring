@@ -174,24 +174,6 @@ models:
       belongsTo: #
       hasMany: #
 
-  PresensiPegawai:
-    id: uuid primary
-    nama: string
-    timestamps: true
-    softDeletes: true
-    relationships:
-      belongsTo: #
-      hasMany: #
-
-  PresensiSiswa:
-    id: uuid primary
-    nama: string
-    timestamps: true
-    softDeletes: true
-    relationships:
-      belongsTo: #
-      hasMany: #
-
   Informasi:
     id: uuid primary
     nama: string
@@ -274,6 +256,50 @@ models:
   JadwalPresensi:
     id: uuid primary
     nama: string
+    hari: enum('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu')
+    jam_masuk: time nullable
+    jam_keluar: time nullable
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  PresensiPegawai:
+    id: uuid primary
+    pegawai_id: uuid foreign:pegawais index
+    jadwal_presensi_id: uuid foreign:jadwal_presensis index
+    tanggal: date index
+    jam_datang: time nullable
+    jam_pulang: time nullable
+    presensi_datang: enum('hadir', 'terlambat', 'cuti', 'libur', 'izin', 'sakit', 'alfa') default:'alfa'
+    presensi_pulang: enum('pulang', 'mangkir') nullable
+    catatan: text nullable
+    lampiran: string nullable
+    status_persetujuan: enum('menunggu', 'disetujui', 'ditolak') default:'menunggu' nullable
+    alasan_ditolak: text nullable
+    rentang_terlambat: integer nullable # perbandingan dengan jam_datang dengan jadwal_presensis.jam_masuk jika status presensi_datang adalah 'terlambat'
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  PresensiSiswa:
+    id: uuid primary
+    siswa_id: uuid foreign:siswas index
+    jadwal_presensi_id: uuid foreign:jadwal_presensis index
+    tanggal: date index
+    jam_datang: time nullable
+    jam_pulang: time nullable
+    presensi_datang: enum('hadir', 'terlambat', 'cuti', 'libur', 'izin', 'sakit', 'alfa') default:'alfa'
+    presensi_pulang: enum('pulang', 'mangkir') nullable
+    catatan: text nullable
+    lampiran: string nullable
+    status_persetujuan: enum('menunggu', 'disetujui', 'ditolak') default:'menunggu' nullable
+    alasan_ditolak: text nullable
+    rentang_terlambat: integer nullable # perbandingan dengan jam_datang dengan jadwal_presensis.jam_masuk jika status presensi_datang adalah 'terlambat'
     timestamps: true
     softDeletes: true
     relationships:
