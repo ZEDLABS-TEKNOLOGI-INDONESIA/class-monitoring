@@ -174,25 +174,8 @@ models:
       belongsTo: #
       hasMany: #
 
-  Informasi:
-    id: uuid primary
-    nama: string
-    timestamps: true
-    softDeletes: true
-    relationships:
-      belongsTo: #
-      hasMany: #
-
-  PengajuanTag:
-    id: uuid primary
-    nama: string
-    timestamps: true
-    softDeletes: true
-    relationships:
-      belongsTo: #
-      hasMany: #
-
   # Historical Entities
+  # Akademik Entities
   GuruMataPelajaran:
     id: uuid primary
     guru_id: uuid foreign:pegawais index
@@ -244,6 +227,7 @@ models:
       belongsTo: #
       hasMany: #
 
+  # Pendaftaran Entities
   JadwalPendaftaran:
     id: uuid primary
     nama: string
@@ -253,6 +237,16 @@ models:
       belongsTo: #
       hasMany: #
 
+  JalurPendaftaran:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  # Presensi Entities
   JadwalPresensi:
     id: uuid primary
     nama: string
@@ -300,6 +294,24 @@ models:
     status_persetujuan: enum('menunggu', 'disetujui', 'ditolak') default:'menunggu' nullable
     alasan_ditolak: text nullable
     rentang_terlambat: integer nullable # perbandingan dengan jam_datang dengan jadwal_presensis.jam_masuk jika status presensi_datang adalah 'terlambat'.
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  PengajuanTag:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  Informasi:
+    id: uuid primary
+    nama: string
     timestamps: true
     softDeletes: true
     relationships:
