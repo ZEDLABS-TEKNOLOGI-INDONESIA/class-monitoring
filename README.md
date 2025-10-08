@@ -283,11 +283,11 @@ WHATSAPP_API_TOKEN=your_api_token
 -   **Setiap Jam Pelajaran**: Notifikasi otomatis terkirim ke orang tua (per siswa) dan Wakil Kurikulum (ringkasan)
 -   **Isi Notifikasi untuk Orang Tua (Personal/Individual)**:
     -   Dikirim ke nomor WhatsApp orang tua masing-masing siswa
-    -   Contoh: "Yth. Bpk/Ibu Orang Tua Ahmad Fadli, Putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) dengan Pak Budi Santoso. Terdeteksi pada jam 08:05 WIB."
+    -   Contoh: "Yth. Bpk/Ibu Orang Tua Ahmad Fadli, Putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) dengan Pak Yahya Zulfikri. Terdeteksi pada jam 08:05 WIB."
     -   Notifikasi terpisah jika siswa TIDAK TERDETEKSI di kelas
 -   **Isi Notifikasi untuk Wakil Kurikulum (Ringkasan Kelas)**:
     -   Ringkasan keberadaan guru dan seluruh siswa per kelas
-    -   Contoh: "Laporan Kelas IX-A, Matematika (08:00-09:30): Guru: Pak Budi HADIR ✓, Siswa: 28/30 HADIR, 2 Tidak Terdeteksi (Ahmad Fadli, Siti Nurhaliza)"
+    -   Contoh: "Laporan Kelas IX-A, Matematika (08:00-09:30): Guru: Pak Yahya HADIR ✓, Siswa: 28/30 HADIR, 2 Tidak Terdeteksi (Ahmad Fadli, Siti Nurhaliza)"
 -   **Alert Real-time**: Pemberitahuan khusus jika guru/siswa tidak terdeteksi
 -   Monitor status pengiriman di "Notifications Resource"
 
@@ -339,7 +339,7 @@ Mengirim data hasil scanning dari IoT device (dikirim setiap 30 detik)
         "classroom": "IX-A",
         "schedule": {
             "subject": "Matematika",
-            "teacher": "Pak Budi",
+            "teacher": "Pak Yahya",
             "time": "08:00 - 09:30"
         },
         "present": {
@@ -372,12 +372,12 @@ Authorization: Bearer {token}
         "classroom": "IX-A",
         "current_schedule": {
             "subject": "Matematika",
-            "teacher": "Pak Budi Santoso",
+            "teacher": "Pak Yahya Zulfikri",
             "time": "08:00 - 09:30",
             "session": 1
         },
         "teacher_presence": {
-            "name": "Pak Budi Santoso",
+            "name": "Pak Yahya Zulfikri",
             "status": "present",
             "last_detected": "08:15:30",
             "duration": "15 minutes"
