@@ -146,7 +146,7 @@ Laravel 12:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/username/monitoring-class.git
+git clone https://github.com/zulfikriyahya/monitoring-class.git
 cd monitoring-class
 ```
 
