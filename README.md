@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![IoT](https://img.shields.io/badge/IoT-Enabled-orange.svg)
-![Laravel](https://img.shields.io/badge/Laravel-10.x-red.svg)
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
 
 **Sistem monitoring kehadiran otomatis untuk siswa dan guru menggunakan teknologi IoT**
 
@@ -90,7 +90,7 @@ Sistem bekerja dengan cara:
 - **Bluetooth Tag**: iBeacon/BLE tag untuk identifikasi
 
 ### Software
-- **Backend**: Laravel 10.x (PHP 8.1+)
+- **Backend**: Laravel 12.x (PHP 8.2+)
 - **Frontend**: Blade Template, Bootstrap 5, jQuery
 - **Database**: MySQL 8.0+
 - **IoT**: Arduino IDE, ESP32 Libraries
