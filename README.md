@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![IoT](https://img.shields.io/badge/IoT-Enabled-orange.svg)
-![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg) 
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
 ![Filament](https://img.shields.io/badge/Filament-4.x-orange.svg)
 
 **Sistem monitoring kehadiran otomatis untuk siswa dan guru menggunakan teknologi IoT**
@@ -22,18 +22,22 @@ Monitoring Class adalah sistem monitoring keberadaan guru dan siswa di kelas ber
 
 Sistem bekerja dengan cara:
 - **Scanning Berkelanjutan**: Alat ESP32 melakukan scanning Bluetooth Tag secara berkala untuk mendeteksi keberadaan guru dan siswa di kelas
+- **Deteksi Individual**: Setiap siswa dan guru dideteksi secara individual berdasarkan Bluetooth Tag unik mereka
 - **Transmisi Real-time**: Data hasil scanning dikirimkan ke server melalui LoRa Gateway dan API Laravel
-- **Notifikasi Terjadwal**: Notifikasi WhatsApp otomatis dikirim ke orang tua siswa dan Wakil Kepala Kurikulum setiap pergantian jam pelajaran
+- **Notifikasi Personal**: Setiap siswa yang terdeteksi akan memicu pengiriman notifikasi WhatsApp langsung ke orang tua masing-masing dan guru notifikasi langsung ke Wakil Kepala Kurikulum
+- **Notifikasi Terjadwal**: Notifikasi WhatsApp otomatis dikirim ke orang tua siswa (per individu) dan Wakil Kepala Kurikulum (ringkasan kelas) setiap pergantian jam pelajaran
 - **Monitoring Per Jam Pelajaran**: Sistem memantau dan mencatat keberadaan di kelas untuk setiap sesi jam pelajaran sesuai jadwal
 
 ## ✨ Fitur
 
 ### 🎯 Fitur Utama
 - **Scanning Berkelanjutan**: ESP32 melakukan scanning Bluetooth Tag secara berkala (setiap 30 detik)
+- **Deteksi Individual**: Setiap siswa dideteksi secara terpisah berdasarkan MAC Address Bluetooth Tag unik
 - **Monitoring Per Jam Pelajaran**: Memantau keberadaan guru dan siswa untuk setiap sesi jam pelajaran
 - **Komunikasi Jarak Jauh**: Implementasi LoRa untuk transmisi data jarak jauh dari ruang kelas ke server
 - **Real-time Presence Tracking**: Dashboard web untuk memantau keberadaan di kelas secara langsung
-- **Notifikasi Terjadwal**: Pengiriman notifikasi WhatsApp otomatis setiap jam pelajaran
+- **Notifikasi Personal ke Orang Tua**: Setiap orang tua menerima notifikasi WhatsApp khusus untuk anaknya sendiri
+- **Notifikasi Terjadwal**: Pengiriman notifikasi WhatsApp otomatis setiap jam pelajaran (individual untuk orang tua, ringkasan untuk Wakil Kurikulum)
 - **Laporan Per Sesi**: Sistem pelaporan keberadaan berdasarkan jam pelajaran dengan berbagai filter dan export
 
 ### 📊 Fitur Dashboard
@@ -49,11 +53,14 @@ Sistem bekerja dengan cara:
 
 ### 🔔 Sistem Notifikasi
 - **Notifikasi Per Jam Pelajaran**: Otomatis dikirim setiap pergantian jam pelajaran
-- **Notifikasi ke Orang Tua**: Informasi keberadaan siswa di kelas per jam pelajaran
-- **Notifikasi ke Wakil Kurikulum**: Laporan keberadaan guru dan siswa per jam pelajaran
+- **Notifikasi Individual ke Orang Tua**: Setiap orang tua menerima notifikasi WhatsApp khusus tentang keberadaan anaknya sendiri
+  - Contoh: "Yth. Bpk/Ibu Ahmad Fadli, putra/i Anda terdeteksi HADIR di kelas IIX-A pada mata pelajaran Matematika (08:00-09:30) bersama Pak Yahya."
+  - Notifikasi dikirim segera setelah siswa terdeteksi di kelas
+- **Notifikasi Ringkasan ke Wakil Kurikulum**: Laporan keberadaan seluruh guru dan siswa per kelas per jam pelajaran
+  - Contoh: "Kelas IIX-A, Matematika (08:00-09:30): Guru HADIR, Siswa 28/30 HADIR, 2 TIDAK TERDETEKSI"
 - **Alert Real-time**: Peringatan jika guru/siswa tidak terdeteksi di kelas saat jam pelajaran
-- **Ringkasan Harian**: Laporan keberadaan harian otomatis di akhir hari
-- **Customizable Template**: Template notifikasi WhatsApp dapat disesuaikan
+- **Ringkasan Harian**: Laporan keberadaan harian otomatis di akhir hari untuk setiap orang tua dan Wakil Kurikulum
+- **Customizable Template**: Template notifikasi WhatsApp dapat disesuaikan per jenis notifikasi dan penerima
 
 ## 🏗 Arsitektur Sistem
 
@@ -61,14 +68,15 @@ Sistem bekerja dengan cara:
 ┌─────────────────┐
 │  Bluetooth Tag  │
 │  (Siswa/Guru)   │
+│   Unique MAC    │
 └────────┬────────┘
          │ BLE Broadcasting
          ▼
 ┌─────────────────┐      ┌──────────────────────┐
 │     ESP32       │      │   Scanning Berkala   │
 │  (BLE Scanner)  │◄─────│  (Setiap 30 detik)   │
-│   di Ruang      │      └──────────────────────┘
-│     Kelas       │
+│   di Ruang      │      │  Deteksi Individual  │
+│     Kelas       │      └──────────────────────┘
 └────────┬────────┘
          │ LoRa (915MHz)
          │ Data: Tag MAC + RSSI + Timestamp
@@ -83,17 +91,20 @@ Sistem bekerja dengan cara:
 ┌─────────────────┐      ┌──────────────────────┐
 │  Laravel API    │◄─────│   Cron Job Notif     │
 │  (Backend Web)  │      │  (Setiap Jam Pel.)   │
-└────────┬────────┘      └──────────────────────┘
+│  + Filament 4   │      └──────────────────────┘
+└────────┬────────┘
          │
-         ├──────────────┬─────────────────┐
-         ▼              ▼                 ▼
-┌─────────────┐  ┌──────────────┐  ┌──────────────┐
-│  Database   │  │  WhatsApp    │  │  Dashboard   │
-│   MySQL     │  │  Gateway API │  │  Real-time   │
-│             │  │              │  │  Monitoring  │
-│ - Presence  │  │ - Orang Tua  │  └──────────────┘
-│   Logs      │  │ - Waka Kur.  │
-│ - Schedules │  │              │
+         ├──────────────┬─────────────────┬──────────────────┐
+         ▼              ▼                 ▼                  ▼
+┌─────────────┐  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐
+│  Database   │  │  WhatsApp    │  │  Dashboard   │  │  WhatsApp   │
+│   MySQL     │  │  Gateway API │  │  Real-time   │  │  Notif per  │
+│             │  │              │  │  Monitoring  │  │  Orang Tua  │
+│ - Presence  │  │ - Orang Tua  │  └──────────────┘  │             │
+│   Logs      │  │   (Personal) │                    │ "Ahmad Fadli│
+│ - Schedules │  │ - Waka Kur.  │                    │  HADIR di   │
+│ - Parent    │  │   (Summary)  │                    │  Matematika"│
+│   Phones    │  │              │                    └─────────────┘
 └─────────────┘  └──────────────┘
 ```
 
@@ -217,7 +228,7 @@ const char* apiEndpoint = "http://yourserver.com/api/attendance";
 
 Edit file `.env` dan tambahkan:
 ```env
-WHATSAPP_API_URL=https://api.fonnte.com/send
+WHATSAPP_API_URL=https://wapi.zedlabs.id/send-message
 WHATSAPP_API_TOKEN=your_api_token
 ```
 
@@ -250,10 +261,15 @@ WHATSAPP_API_TOKEN=your_api_token
 - Gunakan filter untuk melihat per kelas atau per jadwal tertentu
 
 ### 5. Sistem Notifikasi Otomatis
-- **Setiap Jam Pelajaran**: Notifikasi otomatis terkirim ke orang tua dan Wakil Kurikulum
-- **Isi Notifikasi untuk Orang Tua**: Status keberadaan siswa di kelas, mata pelajaran, nama guru
-- **Isi Notifikasi untuk Wakil Kurikulum**: Ringkasan keberadaan guru dan siswa per kelas
-- **Alert**: Pemberitahuan khusus jika guru/siswa tidak terdeteksi
+- **Setiap Jam Pelajaran**: Notifikasi otomatis terkirim ke orang tua (per siswa) dan Wakil Kurikulum (ringkasan)
+- **Isi Notifikasi untuk Orang Tua (Personal/Individual)**: 
+  - Dikirim ke nomor WhatsApp orang tua masing-masing siswa
+  - Contoh: "Yth. Bpk/Ibu Orang Tua Ahmad Fadli, Putra/i Anda terdeteksi HADIR di kelas IX-A pada mata pelajaran Matematika (08:00-09:30) dengan Pak Budi Santoso. Terdeteksi pada jam 08:05 WIB."
+  - Notifikasi terpisah jika siswa TIDAK TERDETEKSI di kelas
+- **Isi Notifikasi untuk Wakil Kurikulum (Ringkasan Kelas)**: 
+  - Ringkasan keberadaan guru dan seluruh siswa per kelas
+  - Contoh: "Laporan Kelas IX-A, Matematika (08:00-09:30): Guru: Pak Budi HADIR ✓, Siswa: 28/30 HADIR, 2 Tidak Terdeteksi (Ahmad Fadli, Siti Nurhaliza)"
+- **Alert Real-time**: Pemberitahuan khusus jika guru/siswa tidak terdeteksi
 - Monitor status pengiriman di "Notifications Resource"
 
 ### 6. Generate Laporan
@@ -297,7 +313,7 @@ Mengirim data hasil scanning dari IoT device (dikirim setiap 30 detik)
   "success": true,
   "message": "Scan data processed successfully",
   "data": {
-    "classroom": "X-A",
+    "classroom": "IX-A",
     "schedule": {
       "subject": "Matematika",
       "teacher": "Pak Budi",
@@ -327,7 +343,7 @@ Authorization: Bearer {token}
 {
   "success": true,
   "data": {
-    "classroom": "X-A",
+    "classroom": "IX-A",
     "current_schedule": {
       "subject": "Matematika",
       "teacher": "Pak Budi Santoso",
@@ -382,7 +398,23 @@ Trigger manual pengiriman notifikasi per jam pelajaran (biasanya otomatis via cr
   "sent_count": {
     "parents": 28,
     "curriculum_head": 1
-  }
+  },
+  "notifications": [
+    {
+      "student_name": "Ahmad Fadli",
+      "parent_phone": "6281234567890",
+      "status": "present",
+      "sent": true,
+      "message_preview": "Yth. Bpk/Ibu Orang Tua Ahmad Fadli, Putra/i Anda terdeteksi HADIR..."
+    },
+    {
+      "student_name": "Siti Nurhaliza",
+      "parent_phone": "6281234567891",
+      "status": "not_detected",
+      "sent": true,
+      "message_preview": "Yth. Bpk/Ibu Orang Tua Siti Nurhaliza, Putra/i Anda TIDAK TERDETEKSI..."
+    }
+  ]
 }
 ```
 
