@@ -1,4 +1,4 @@
-# 📚 Monitoring Class - Sistem Monitoring Kehadiran Berbasis IoT
+# 📚 Class Monitoring - Sistem Monitoring Kehadiran Berbasis IoT
 
 <div align="center">
 
@@ -18,7 +18,7 @@
 
 ## 📖 Deskripsi
 
-Monitoring Class adalah sistem monitoring keberadaan guru dan siswa di kelas berbasis IoT yang memantau kehadiran secara real-time pada setiap jam pelajaran menggunakan Bluetooth Tag, ESP32, dan LoRa.
+Class Monitoring adalah sistem monitoring keberadaan guru dan siswa di kelas berbasis IoT yang memantau kehadiran secara real-time pada setiap jam pelajaran menggunakan Bluetooth Tag, ESP32, dan LoRa.
 
 Sistem bekerja dengan cara:
 
@@ -167,8 +167,8 @@ Laravel 12:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/zulfikriyahya/monitoring-class.git
-cd monitoring-class
+git clone https://github.com/zulfikriyahya/class-monitoring.git
+cd class-monitoring
 ```
 
 ### 2. Setup Backend (Laravel)
@@ -529,10 +529,10 @@ Proyek ini dilisensikan di bawah [MIT License](LICENSE)
 
 ## 📞 Kontak & Support
 
--   Email: support@monitoring-class.zedlabs.id
--   Website: https://monitoring-class.zedlabs.id
--   Documentation: https://monitoring-class.zedlabs.id/docs
--   Issues: https://github.com/zulfikriyahya/monitoring-class/issues
+-   Email: support@class-monitoring.zedlabs.id
+-   Website: https://class-monitoring.zedlabs.id
+-   Documentation: https://class-monitoring.zedlabs.id/docs
+-   Issues: https://github.com/zulfikriyahya/class-monitoring/issues
 
 ## 🙏 Acknowledgments
 
