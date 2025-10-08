@@ -26,6 +26,17 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->spa(hasPrefetching: true)
+            ->unsavedChangesAlerts()
+            ->globalSearch(false)
+            ->databaseNotifications()
+            ->registration()
+            ->profile()
+            ->emailVerification()
+            ->passwordReset()
+            // ->brandLogo(null)
+            // ->darkModeBrandLogo(null)
+            ->topNavigation()
             ->id('admin')
             ->path('admin')
             ->login()
@@ -39,8 +50,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                // AccountWidget::class,
+                // FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -59,6 +70,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugins([
                 EasyFooterPlugin::make()
+                ->withSentence(env('APP_NAME') . ' | Powered by ' . env('AUTHOR'))
             ]);
     }
 }
