@@ -9,6 +9,7 @@ models:
     timestamps: true
     softDeletes: true
     relationships:
+      belongsTo: #
       hasMany: Provinsi
 
   Provinsi:
@@ -50,34 +51,241 @@ models:
     softDeletes: true
     relationships:
       belongsTo: Kecamatan
+      hasMany: #
 
   # Instansi Pendidikan
   Instansi:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   InstansiAsal:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
 
   # Periodik
   TahunPelajaran:
+    id: uuid primary
+    nama: string
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   TahunPendaftaran:
+    id: uuid primary
+    nama: string
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   TahunAnggaran:
+    id: uuid primary
+    nama: string
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
 
   # Primary Entities
   Jabatan:
-  User:
+    id: uuid primary
+    nama: string
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   Pegawai:
+    id: uuid primary
+    user_id: uuid foreign:users index
+    instansi_id: uuid foreign:instansis index
+    jabatan_id: uuid foreign:jabatans index nullable
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   Siswa:
+    id: uuid primary
+    user_id: uuid foreign:users index
+    instansi_id: uuid foreign:instansis index
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   Jurusan:
+    id: uuid primary
+    nama: string
+    deskripsi: text nullable
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   Kelas:
+    id: uuid primary
+    nama: string
+    jurusan_id: uuid foreign:jurusans index nullable
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   Ekstrakurikuler:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   MataPelajaran:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   PresensiPegawai:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   PresensiSiswa:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   Informasi:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   PengajuanTag:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
 
   # Historical Entities
+  GuruMataPelajaran:
+    id: uuid primary
+    guru_id: uuid foreign:pegawais index
+    mata_pelajaran_id: uuid foreign:mata_pelajarans index
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  GuruEkstrakurikuler:
+    id: uuid primary
+    guru_id: uuid foreign:pegawais index
+    ekstrakurikuler_id: uuid foreign:ekstrakurikulers index
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  KelasTahunPelajaran:
+    id: uuid primary
+    tahun_pelajaran_id: uuid foreign:tahun_pelajarans index
+    kelas_id: uuid foreign:kelas index
+    guru_kelas_id: uuid foreign:pegawais index nullable
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
+  KelasSiswa:
+    id: uuid primary
+    kelas_tahun_pelajaran_id: uuid foreign:kelas_tahun_pelajarans index
+    siswa_id: uuid foreign:siswas index
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   JadwalPelajaran:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   JadwalPendaftaran:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   JadwalPresensi:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
 
   # Supporting Entities
   Pengaturan:
+    id: uuid primary
+    nama: string
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
