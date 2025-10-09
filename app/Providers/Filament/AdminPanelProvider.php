@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Pages\Dashboard;
+use Filament\Support\Enums\Width;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
@@ -33,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
             // ->brandLogo(null)
             // ->darkModeBrandLogo(null)
             ->topNavigation()
+            ->maxContentWidth(Width::Full)
             ->id('admin')
             ->path('admin')
             ->login()
@@ -70,7 +72,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugins([
                 EasyFooterPlugin::make()
-                ->withSentence(env('APP_NAME') . ' | Powered by ' . env('AUTHOR')),
+                ->withSentence(config('app.name') . ' | Powered by ' . config('app.author'))
             ]);
     }
 }
