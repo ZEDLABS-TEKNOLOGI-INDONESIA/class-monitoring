@@ -1,25 +1,11 @@
 models:
   # Wilayah Administratif
-  Negara:
-    id: uuid primary
-    nama: string
-    kode: string nullable
-    phone_code: string unique
-    bendera: string nullable
-    timestamps: true
-    softDeletes: true
-    relationships:
-      belongsTo: #
-      hasMany: Provinsi
-
   Provinsi:
     id: uuid primary
-    negara_id: uuid foreign:negaras index
     nama: string
     timestamps: true
     softDeletes: true
     relationships:
-      belongsTo: Negara
       hasMany: Kabupaten
 
   Kabupaten:
@@ -57,6 +43,24 @@ models:
   Instansi:
     id: uuid primary
     nama: string
+    nss: string nullable
+    npsn: string nullable
+    alamat: string nullable
+    telepon: string nullable
+    email: string nullable
+    website: string nullable
+    logo: string nullable
+    logo_institusi: string nullable
+    provinsi_id: uuid foreign:provinsis index nullable
+    kabupaten_id: uuid foreign:kabupatens index nullable
+    kecamatan_id: uuid foreign:kecamatans index nullable
+    kelurahan_id: uuid foreign:kelurahans index nullable
+    status: enum('aktif', 'non-aktif') default:'aktif'
+    jenis: enum('negeri', 'swasta') default:'negeri'
+    tipe: enum('paud','tk','sd','sltp','slta','pt')
+    tahun_berdiri: date nullable
+    akreditasi: enum('a', 'b', 'c', 'belum')
+    akreditasi_tanggal: date nullable
     timestamps: true
     softDeletes: true
     relationships:
@@ -66,6 +70,24 @@ models:
   InstansiAsal:
     id: uuid primary
     nama: string
+    nss: string nullable
+    npsn: string nullable
+    alamat: string nullable
+    telepon: string nullable
+    email: string nullable
+    website: string nullable
+    logo: string nullable
+    logo_institusi: string nullable
+    provinsi_id: uuid foreign:provinsis index nullable
+    kabupaten_id: uuid foreign:kabupatens index nullable
+    kecamatan_id: uuid foreign:kecamatans index nullable
+    kelurahan_id: uuid foreign:kelurahans index nullable
+    status: enum('aktif', 'non-aktif') default:'aktif'
+    jenis: enum('negeri', 'swasta') default:'negeri'
+    tipe: enum('paud','tk','sd','sltp','slta','pt')
+    tahun_berdiri: date nullable
+    akreditasi: enum('a', 'b', 'c', 'belum')
+    akreditasi_tanggal: date nullable
     timestamps: true
     softDeletes: true
     relationships:
@@ -73,9 +95,24 @@ models:
       hasMany: #
 
   # Periodik
+  Semester:
+    id: uuid primary
+    nama: string
+    tanggal_mulai: date nullable
+    tanggal_selesai: date nullable
+    is_aktif: boolean
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsTo: #
+      hasMany: #
+
   TahunPelajaran:
     id: uuid primary
     nama: string
+    semester_id: uuid foreign:semesters index nullable
+    tanggal_mulai: date nullable
+    tanggal_selesai: date nullable
     is_aktif: boolean
     timestamps: true
     softDeletes: true
@@ -86,6 +123,8 @@ models:
   TahunPendaftaran:
     id: uuid primary
     nama: string
+    tanggal_mulai: date nullable
+    tanggal_selesai: date nullable
     is_aktif: boolean
     timestamps: true
     softDeletes: true
@@ -96,6 +135,8 @@ models:
   TahunAnggaran:
     id: uuid primary
     nama: string
+    tanggal_mulai: date nullable
+    tanggal_selesai: date nullable
     is_aktif: boolean
     timestamps: true
     softDeletes: true
@@ -107,6 +148,7 @@ models:
   Jabatan:
     id: uuid primary
     nama: string
+    deskripsi: text nullable
     is_aktif: boolean
     timestamps: true
     softDeletes: true
@@ -130,6 +172,16 @@ models:
     id: uuid primary
     user_id: uuid foreign:users index
     instansi_id: uuid foreign:instansis index
+    nik: string nullable unique
+    no_kk: string nullable
+    nisn: string nullable unique
+    nis: string nullable
+    telepon: string nullable
+    alamat: string nullable
+    tempat_lahir: string nullable
+    tanggal_lahir: date nullable
+    jenis_kelamin: enum('pria', 'wanita') default:'pria'
+    is_aktif: boolean
     timestamps: true
     softDeletes: true
     relationships:
