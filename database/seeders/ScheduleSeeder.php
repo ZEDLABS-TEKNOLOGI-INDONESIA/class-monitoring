@@ -21,10 +21,10 @@ class ScheduleSeeder extends Seeder
 
         $timeSlots = [
             ['start' => '07:00', 'end' => '08:30', 'subject' => 'Matematika'],
-            ['start' => '08:31', 'end' => '10:00', 'subject' => 'Bahasa Indonesia'],
+            ['start' => '08:30', 'end' => '10:00', 'subject' => 'Bahasa Indonesia'],
             ['start' => '10:15', 'end' => '11:45', 'subject' => 'IPA'],
             ['start' => '12:30', 'end' => '14:00', 'subject' => 'IPS'],
-            ['start' => '14:01', 'end' => '15:30', 'subject' => 'Bahasa Inggris'],
+            ['start' => '14:00', 'end' => '15:30', 'subject' => 'Bahasa Inggris'],
         ];
 
         // Create schedule for today and next 7 days
