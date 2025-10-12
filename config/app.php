@@ -125,4 +125,13 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Gateway API Key
+    |--------------------------------------------------------------------------
+    |
+    | API key untuk autentikasi gateway
+    |
+    */
+    'gateway_api_key' => env('GATEWAY_API_KEY', 'your_secret_api_key_here'),
 ];

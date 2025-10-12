@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrator',
             'email' => 'admin@zedlabs.id',
         ]);
+
+        $this->call([
+            ClassSeeder::class,
+            StudentSeeder::class,
+            BluetoothTagSeeder::class,
+            ScheduleSeeder::class,
+            NodeSeeder::class,
+        ]);
     }
 }
