@@ -250,10 +250,10 @@ SENDER RECEIVER
 
 ## **📊 Success Rate:**
 
-- **Jarak dekat (< 100m)**: 95-99% sukses
-- **Jarak sedang (100-300m)**: 85-95% sukses
-- **Jarak jauh (300-500m dengan tembok)**: 70-85% sukses
-- **Dengan retry 3x**: Hampir 100% sukses!
+-   **Jarak dekat (< 100m)**: 95-99% sukses
+-   **Jarak sedang (100-300m)**: 85-95% sukses
+-   **Jarak jauh (300-500m dengan tembok)**: 70-85% sukses
+-   **Dengan retry 3x**: Hampir 100% sukses!
 
 Jadi intinya: **Sender pecah data → Kirim satu-satu → Tunggu ACK → Receiver gabung → Parse → Tampilkan!** 🚀
 
