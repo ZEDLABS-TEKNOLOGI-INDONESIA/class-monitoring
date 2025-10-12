@@ -12,7 +12,7 @@ API_URL="http://localhost:8000/api/gateway/attendance"
 API_KEY="your_api_key_here"
 GATEWAY_ID="GW001"
 LOG_FILE="storage/logs/attendance_simulation_$(date +%Y%m%d_%H%M%S).log"
-PARALLEL_JOBS=10 # Number of parallel requests
+PARALLEL_JOBS=5 # Number of parallel requests
 
 # Colors for output
 RED='\033[0;31m'
