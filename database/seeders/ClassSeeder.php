@@ -48,12 +48,13 @@ class ClassSeeder extends Seeder
             ['name' => '9G', 'grade' => '9', 'section' => 'G', 'node_id' => 27, 'room_number' => 'R907'],
             ['name' => '9H', 'grade' => '9', 'section' => 'H', 'node_id' => 28, 'room_number' => 'R908'],
             ['name' => '9I', 'grade' => '9', 'section' => 'I', 'node_id' => 29, 'room_number' => 'R909'],
+            ['name' => '9J', 'grade' => '9', 'section' => 'J', 'node_id' => 30, 'room_number' => 'R910'],
         ];
 
         foreach ($classes as $class) {
             Classes::create($class);
         }
 
-        $this->command->info('✅ 29 classes created (Node 1-29 mapped)');
+        $this->command->info('✅ 30 classes created (Node 1-30 mapped)');
     }
 }
