@@ -1,4 +1,4 @@
-# 📚 Class Monitoring - Sistem Monitoring Kehadiran Berbasis IoT
+# Class Monitoring - Sistem Monitoring Kehadiran Berbasis IoT
 
 <div align="center">
 
@@ -29,9 +29,9 @@ Sistem bekerja dengan cara:
 -   **Notifikasi Terjadwal**: Notifikasi WhatsApp otomatis dikirim ke orang tua siswa (per individu) dan Wakil Kepala Kurikulum (ringkasan kelas) setiap pergantian jam pelajaran
 -   **Monitoring Per Jam Pelajaran**: Sistem memantau dan mencatat keberadaan di kelas untuk setiap sesi jam pelajaran sesuai jadwal
 
-## ✨ Fitur
+## Fitur
 
-### 🎯 Fitur Utama
+### Fitur Utama
 
 -   **Scanning Berkelanjutan**: ESP32 melakukan scanning Bluetooth Tag secara berkala (setiap 30 detik)
 -   **Deteksi Individual**: Setiap siswa dideteksi secara terpisah berdasarkan MAC Address Bluetooth Tag unik
@@ -42,7 +42,7 @@ Sistem bekerja dengan cara:
 -   **Notifikasi Terjadwal**: Pengiriman notifikasi WhatsApp otomatis setiap jam pelajaran (individual untuk orang tua, ringkasan untuk Wakil Kurikulum)
 -   **Laporan Per Sesi**: Sistem pelaporan keberadaan berdasarkan jam pelajaran dengan berbagai filter dan export
 
-### 📊 Fitur Dashboard
+### Fitur Dashboard
 
 -   **Filament Admin Panel**: Interface modern dan responsif untuk manajemen sistem
 -   Dashboard statistik keberadaan real-time per jam pelajaran dengan widgets
@@ -54,7 +54,7 @@ Sistem bekerja dengan cara:
 -   Grafik dan visualisasi data keberadaan per sesi menggunakan Chart Widgets
 -   **Custom Pages**: Halaman monitoring real-time dengan auto-refresh
 
-### 🔔 Sistem Notifikasi
+### Sistem Notifikasi
 
 -   **Notifikasi Per Jam Pelajaran**: Otomatis dikirim setiap pergantian jam pelajaran
 -   **Notifikasi Individual ke Orang Tua**: Setiap orang tua menerima notifikasi WhatsApp khusus tentang keberadaan anaknya sendiri
@@ -66,7 +66,7 @@ Sistem bekerja dengan cara:
 -   **Ringkasan Harian**: Laporan keberadaan harian otomatis di akhir hari untuk setiap orang tua dan Wakil Kurikulum
 -   **Customizable Template**: Template notifikasi WhatsApp dapat disesuaikan per jenis notifikasi dan penerima
 
-## 🏗 Arsitektur Sistem
+## Arsitektur Sistem
 
 ```
 ┌─────────────────┐
@@ -111,6 +111,9 @@ Sistem bekerja dengan cara:
 │   Phones    │  │              │                    └───────────────┘
 └─────────────┘  └──────────────┘
 ```
+
+## Diagram Infrastruktur
+![Diagram](diagram-monitoring.svg)
 
 ## 🛠 Teknologi yang Digunakan
 
