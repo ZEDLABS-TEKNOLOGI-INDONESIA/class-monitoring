@@ -16,7 +16,7 @@
 
 ---
 
-## 📖 Deskripsi
+## Deskripsi
 
 Class Monitoring adalah sistem monitoring keberadaan guru dan siswa di kelas berbasis IoT yang memantau kehadiran secara real-time pada setiap jam pelajaran menggunakan Bluetooth Tag, ESP32, dan LoRa.
 
@@ -115,7 +115,7 @@ Sistem bekerja dengan cara:
 ## Diagram Infrastruktur
 ![Diagram](diagram-monitoring.svg)
 
-## 🛠 Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 ### Hardware
 
@@ -148,7 +148,7 @@ Laravel 12:
 - Livewire 3.x (Filament dependency)
 ```
 
-## 📋 Persyaratan Sistem
+## Persyaratan Sistem
 
 ### Hardware Requirements
 
@@ -165,7 +165,7 @@ Laravel 12:
 -   Node.js >= 20.x (untuk Filament assets)
 -   Arduino IDE >= 1.8.x
 
-## 🚀 Instalasi
+## Instalasi
 
 ### 1. Clone Repository
 
@@ -249,7 +249,7 @@ WHATSAPP_API_URL=https://wapi.zedlabs.id/send-message
 WHATSAPP_API_TOKEN=your_api_token
 ```
 
-## 📱 Penggunaan
+## Penggunaan
 
 ### 1. Registrasi Bluetooth Tag
 
@@ -302,7 +302,7 @@ WHATSAPP_API_TOKEN=your_api_token
 -   Klik tombol "Export" di header tabel untuk export ke format PDF atau Excel
 -   Kirim laporan via email/WhatsApp menggunakan bulk action
 
-## 📡 Dokumentasi API
+## Dokumentasi API
 
 ### Endpoint Keberadaan (Presence)
 
@@ -450,7 +450,7 @@ Trigger manual pengiriman notifikasi per jam pelajaran (biasanya otomatis via cr
 }
 ```
 
-## 🔐 Keamanan
+## Keamanan
 
 -   API menggunakan Laravel Sanctum untuk autentikasi
 -   HTTPS wajib untuk production environment
@@ -458,7 +458,7 @@ Trigger manual pengiriman notifikasi per jam pelajaran (biasanya otomatis via cr
 -   Validasi data pada setiap request
 -   Enkripsi komunikasi LoRa (optional)
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run unit tests
@@ -471,7 +471,7 @@ php artisan test --filter AttendanceTest
 php artisan test --coverage
 ```
 
-## 📊 Database Schema
+## Database Schema
 
 ### Tabel Utama
 
@@ -488,7 +488,7 @@ notifications (id, recipient_phone, recipient_role, schedule_id, message, sent_a
 notification_templates (id, type, role, template_text, variables)
 ```
 
-## 🤝 Kontribusi
+## Kontribusi
 
 Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 
@@ -498,7 +498,7 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 4. Push ke branch (`git push origin feature/AmazingFeature`)
 5. Buat Pull Request
 
-## 📝 Roadmap
+## Roadmap
 
 -   [ ] **Filament Widgets Enhancement**: Custom widgets untuk analytics keberadaan
 -   [ ] **Multi-tenancy Support**: Filament multi-tenancy untuk multiple sekolah
@@ -511,7 +511,7 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 -   [ ] **Filament Actions**: Custom actions untuk bulk operations
 -   [ ] **Real-time Notifications**: Pusher/Echo integration untuk live updates
 
-## 🐛 Known Issues
+## Known Issues
 
 -   LoRa range terbatas dalam bangunan dengan banyak penghalang (optimal: 200-500m indoor)
 -   Bluetooth interference pada area dengan banyak device (gunakan RSSI threshold)
@@ -519,25 +519,25 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 -   Tag yang dibawa keluar kelas sesaat masih terdeteksi hingga scan berikutnya (maks 30 detik delay)
 -   ESP32 perlu reboot periodik untuk stabilitas (recommended: setiap 24 jam)
 
-## 📄 Lisensi
+## Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE)
 
-## 👥 Tim Pengembang
+## Tim Pengembang
 
 -   **Project Lead**: Yahya Zulfikri
 -   **Backend Developer**: Yahya Zulfikri
 -   **IoT Engineer**: Yahya Zulfikri
 -   **Frontend Developer**: Yahya Zulfikri
 
-## 📞 Kontak & Support
+## Kontak & Support
 
 -   Email: support@class-monitoring.zedlabs.id
 -   Website: https://class-monitoring.zedlabs.id
 -   Documentation: https://class-monitoring.zedlabs.id/docs
 -   Issues: https://github.com/zulfikriyahya/class-monitoring/issues
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 -   Terima kasih kepada komunitas Arduino dan ESP32
 -   Laravel Indonesia Community
@@ -549,6 +549,6 @@ Proyek ini dilisensikan di bawah [MIT License](LICENSE)
 
 **⭐ Jika project ini membantu, berikan star di GitHub! ⭐**
 
-Made with ❤️ by ZEDLABS
+Made with ❤️ by Yahya Zulfikri
 
 </div>
